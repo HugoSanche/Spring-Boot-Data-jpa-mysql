@@ -24,8 +24,40 @@ public class EmployeeApplication {
 			//createEmployee(employeeDAO);
 			//readEmployee(employeeDAO);
 			//getAllEmployees(employeeDAO);
-			queryForEmployeeByFirstName(employeeDAO);
+			//queryForEmployeeByFirstName(employeeDAO);
+
+			//updateEmployee(employeeDAO);
+			//deleteEmployee(employeeDAO);
+			deleteAllEmployees(employeeDAO);
 		};
+	}
+
+	private void deleteAllEmployees(EmployeeDAO employeeDAO) {
+		int numbersOfRowsDeleted= employeeDAO.deleteAllEmployee();
+		System.out.println(numbersOfRowsDeleted);
+	}
+
+	private void deleteEmployee(EmployeeDAO employeeDAO) {
+		int employeeId=4461;
+		employeeDAO.delete(employeeId);
+
+	}
+
+	private void updateEmployee(EmployeeDAO employeeDAO) {
+		//
+		int idEmployee=1;
+		//get employee based in id
+		Employee theEmployee=employeeDAO.foundById(idEmployee);
+
+		//change the first name
+		theEmployee.setFirstName("Pedro");
+
+		//update the employee
+		employeeDAO.update(theEmployee);
+
+		//display the updated employee
+		System.out.println(theEmployee);
+
 	}
 
 	private void queryForEmployeeByFirstName(EmployeeDAO employeeDAO) {

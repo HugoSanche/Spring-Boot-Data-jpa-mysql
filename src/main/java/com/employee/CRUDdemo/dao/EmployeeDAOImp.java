@@ -45,4 +45,29 @@ public class EmployeeDAOImp implements EmployeeDAO {
 
         return theQuery.getResultList();
     }
+
+    @Override
+    @Transactional
+    public void update(Employee employee) {
+        entityManager.merge(employee);
+    }
+
+    @Transactional
+    @Override
+    public void delete(Integer id) {
+
+        System.out.println("Deleting Employee");
+
+        Employee theEmployee=entityManager.find(Employee.class,id);
+        System.out.println(theEmployee);
+        entityManager.remove(theEmployee);
+
+    }
+
+    @Override
+    @Transactional
+    public int deleteAllEmployee() {
+       int numbersOfRowsDeleted=entityManager.createQuery("delete from Employee").executeUpdate();
+        return numbersOfRowsDeleted;
+    }
 }

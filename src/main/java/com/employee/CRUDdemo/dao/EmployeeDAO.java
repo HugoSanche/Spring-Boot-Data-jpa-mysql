@@ -9,4 +9,7 @@ public interface EmployeeDAO {
      Employee foundById(Integer id);
      List<Employee> getAllEmployee();
      List<Employee> findByFirstName(String firstName);
+     void update(Employee employee);
+     void delete(Integer id);
+     int deleteAllEmployee();
 }
